@@ -11,24 +11,20 @@
 ## 预览
 
 ```
-cd "C:\Users\Seven\DeskBox\AI Tools\Grok Bot Repriority\threejs-konbini-shinkai-v2\02-scene"
+cd 02-scene
 npm i
 npm run dev
 ```
 
 浏览器打开终端地址（默认 `http://localhost:5174`）。左键拖拽观察，滚轮推拉。截一帧审审美即可。
 
-## Box 工作副本（尚未写入用户电脑）
+## 项目结构
 
-当前可运行树在云电脑：`/workspace/threejs-konbini-shinkai-v2`。
-**尚未同步**到 `C:\Users\Seven\DeskBox\AI Tools\Grok Bot Repriority\threejs-konbini-shinkai-v2`。
-
-在 box 上预览：
-
-```
-cd /workspace/threejs-konbini-shinkai-v2/02-scene
-npm i
-npm run dev
-```
-
-默认 `http://localhost:5174`。改组后的内部检查帧：`01-refs/m1-rain-dusk-box.png`（无头 Chrome 截取，仅作构建验证，不是审美过审）。应用前备份：`/workspace/threejs-konbini-shinkai-v2.pre-env.bak`。
+- `00-brief/` 任务与设计说明（BRIEF.md、DESIGN.md）
+- `02-scene/` 可运行源码（Vite + TypeScript + Three.js）
+  - `src/main.ts` 启动与相机
+  - `src/env/` 环境与色板
+  - `src/scene/` 场景集装：World、Facade、Interior、Goods、Props、Street、Lights、Nature、Distant
+  - `src/shaders/` 天空、雨、雾、光柱、湿路面
+  - `src/textures/makeTextures.ts` 纹理
+  - `scripts/` 静帧导出

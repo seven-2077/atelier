@@ -1,0 +1,348 @@
+:root {
+  --ink: #f0e7da;
+  --dim: rgba(219, 207, 226, 0.68);
+  --accent: #d3bfe6;
+  --rule: rgba(236, 226, 214, 0.28);
+  --scrim: linear-gradient(
+    90deg,
+    rgba(13, 12, 25, 0.78) 0%,
+    rgba(13, 12, 25, 0.48) 34%,
+    rgba(13, 12, 25, 0.16) 62%,
+    rgba(13, 12, 25, 0) 100%
+  );
+  --vignette: radial-gradient(
+    ellipse 76% 68% at 56% 47%,
+    rgba(0, 0, 0, 0) 48%,
+    rgba(5, 6, 15, 0.16) 74%,
+    rgba(5, 6, 15, 0.5) 100%
+  );
+  --shadow: 0 2px 20px rgba(7, 6, 18, 0.42);
+}
+
+body[data-mode='day'] {
+  --ink: #222c3e;
+  --dim: rgba(31, 42, 60, 0.78);
+  --accent: #573b62;
+  --rule: rgba(36, 46, 64, 0.34);
+  --scrim: linear-gradient(
+    90deg,
+    rgba(249, 245, 236, 0.8) 0%,
+    rgba(249, 245, 236, 0.48) 28%,
+    rgba(249, 245, 236, 0.13) 52%,
+    rgba(249, 245, 236, 0) 82%
+  );
+  --vignette: radial-gradient(
+    ellipse 78% 70% at 56% 47%,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(60, 70, 90, 0.08) 78%,
+    rgba(54, 64, 84, 0.26) 100%
+  );
+  --shadow: 0 1px 2px rgba(255, 253, 247, 0.95), 0 2px 14px rgba(255, 250, 240, 0.72);
+}
+
+body[data-mode='golden'] {
+  --ink: #f3e8da;
+  --dim: rgba(240, 228, 214, 0.7);
+  --accent: #f0c9d9;
+  --rule: rgba(255, 238, 218, 0.26);
+  --scrim: linear-gradient(
+    90deg,
+    rgba(34, 28, 44, 0.58) 0%,
+    rgba(34, 28, 44, 0.3) 32%,
+    rgba(34, 28, 44, 0.06) 60%,
+    rgba(34, 28, 44, 0) 100%
+  );
+  --vignette: radial-gradient(
+    ellipse 78% 70% at 56% 47%,
+    rgba(0, 0, 0, 0) 54%,
+    rgba(58, 38, 54, 0.09) 78%,
+    rgba(40, 26, 44, 0.32) 100%
+  );
+  --shadow: 0 2px 16px rgba(24, 18, 36, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0c0d1c;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  color: var(--ink);
+  transition: color 1.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+body.revealed #app {
+  opacity: 1;
+}
+
+#app canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scrim,
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scrim {
+  background: var(--scrim);
+  transition: background 1.2s ease;
+}
+
+.vignette {
+  background: var(--vignette);
+  transition: background 1.2s ease;
+}
+
+.mag {
+  position: fixed;
+  left: 5vw;
+  top: 5.8vh;
+  bottom: 5vh;
+  width: min(25vw, 420px);
+  min-width: 330px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  text-shadow: var(--shadow);
+  user-select: none;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-variant: small-caps;
+}
+
+.masthead-dot {
+  opacity: 0.6;
+}
+
+.rule {
+  height: 1px;
+  background: var(--rule);
+  margin: 15px 0 14px;
+  width: 100%;
+}
+
+.city {
+  margin: 0;
+  font-family: 'Playfair Display', 'Bodoni Moda', Didot, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(36px, 2.45vw, 47px);
+  line-height: 0.92;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.issue {
+  margin-top: 11px;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-variant: small-caps;
+}
+
+.issue span {
+  margin-left: 12px;
+  opacity: 0.8;
+}
+
+.title {
+  margin: 4.2vh 0 0;
+  font-family: 'Pinyon Script', 'Alex Brush', cursive;
+  font-weight: 400;
+  color: var(--accent);
+  font-size: clamp(60px, 4.15vw, 80px);
+  line-height: 0.78;
+  letter-spacing: 0.01em;
+  transform: rotate(-2.2deg);
+  transform-origin: left center;
+}
+
+.title span {
+  display: block;
+}
+
+.title span + span {
+  padding-left: 0.55em;
+}
+
+.quote {
+  margin: 3.4vh 0 0;
+  font-style: italic;
+  font-size: clamp(15px, 1.02vw, 19px);
+  line-height: 1.5;
+  color: var(--ink);
+  opacity: 0.92;
+}
+
+.column {
+  margin-top: 3.1vh;
+  max-width: 330px;
+}
+
+.eyebrow {
+  font-size: 8.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 7px;
+}
+
+.column h3 {
+  margin: 0 0 5px;
+  font-size: clamp(17px, 1.13vw, 22px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.column p {
+  margin: 0;
+  font-size: clamp(11px, 0.72vw, 13.5px);
+  line-height: 1.52;
+  color: var(--dim);
+  max-width: 290px;
+}
+
+.light {
+  margin-top: auto;
+  padding-top: 2vh;
+}
+
+.times {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 236, 228, 0.82);
+  font-variant: small-caps;
+}
+
+.times span {
+  opacity: 0.55;
+}
+
+.times button {
+  pointer-events: auto;
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0 0 3px;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.times button:hover,
+.times button:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+.times button.active {
+  color: #fbf6ed;
+  border-bottom-color: var(--accent);
+}
+
+body[data-mode='day'] .scrim {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 82%, transparent 98%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 82%, transparent 98%);
+}
+
+body[data-mode='day'] .light {
+  color: #273149;
+}
+
+body[data-mode='day'] .light .eyebrow {
+  color: rgba(31, 42, 60, 0.74);
+}
+
+body[data-mode='day'] .times {
+  color: rgba(31, 42, 60, 0.86);
+}
+
+body[data-mode='day'] .times button.active {
+  color: #1d2637;
+  border-bottom-color: #573b62;
+}
+
+body[data-mode='day'] .foot {
+  color: rgba(31, 42, 60, 0.8);
+  border-top-color: rgba(36, 46, 64, 0.3);
+}
+
+.foot {
+  margin-top: 2.2vh;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  opacity: 0.92;
+}
+
+.hint {
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 1200px) {
+  .mag {
+    width: 34vw;
+    min-width: 310px;
+    left: 4vw;
+  }
+}
+
+@media (max-height: 760px) {
+  .column:nth-of-type(3) {
+    display: none;
+  }
+  .title {
+    font-size: 64px;
+  }
+}

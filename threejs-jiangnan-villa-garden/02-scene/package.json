@@ -1,0 +1,21 @@
+{
+  "name": "jiangnan-villa-garden",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5181 --strictPort",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5181 --strictPort",
+    "capture": "node scripts/capture-still.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "puppeteer-core": "^23.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
