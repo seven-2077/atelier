@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN" data-time="golden">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>庭深晚春 · Late Spring Garden</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <script>
+      (() => {
+        const t = new URLSearchParams(location.search).get('time');
+        if (t === 'day' || t === 'golden' || t === 'night') {
+          document.documentElement.dataset.time = t;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <canvas id="scene" aria-label="江南晚春庭园微缩场景，黄昏光线"></canvas>
+
+    <div class="veil" aria-hidden="true"></div>
+    <div class="veil veil-night" aria-hidden="true"></div>
+
+    <aside class="magazine" aria-label="期刊式版面文字">
+      <header class="masthead">
+        <p class="eyebrow"><span>VOL. 06</span><i>—</i><span>LATE SPRING</span><i>·</i><span>JIANGNAN</span></p>
+        <h1 class="wordmark" aria-label="JIANGNAN">Jiangnan</h1>
+        <p class="wordmark-cn">江南 · 园事</p>
+      </header>
+
+      <article class="feature">
+        <h2 class="title-cn">庭深晚春</h2>
+        <p class="title-en"><em>Late Spring Garden</em></p>
+        <p class="dek">
+          暮色顺着瓦脊滑下来，落在池面、桥石和芭蕉的叶背上。园子安静，
+          像一枚搁在胡桃木桌面上的微缩旧梦。
+        </p>
+
+        <ol class="sections">
+          <li>
+            <p class="meta"><span class="idx">01</span><span class="rule"></span><span class="kind">入园 / ENTERING</span></p>
+            <h3>月亮门与竹影</h3>
+            <p>粉墙中段开一孔圆门，门后竹影叠着天光。石板路贴着水走，转角才听见水声。</p>
+          </li>
+          <li>
+            <p class="meta"><span class="idx">02</span><span class="rule"></span><span class="kind">高台 / THE TERRACE</span></p>
+            <h3>砌石与暖灯</h3>
+            <p>砌石挡墙托起宅前平台。露台栏杆细而密，檐下灯笼先亮，暖光顺着木格窗一格一格铺开。</p>
+          </li>
+          <li>
+            <p class="meta"><span class="idx">03</span><span class="rule"></span><span class="kind">池上 / ON THE POND</span></p>
+            <h3>桥、石与初荷</h3>
+            <p>石板桥斜斜横过浅池，桥脚压着初生的荷叶。太湖石错在池角，石桌旁留着一小片落花。</p>
+          </li>
+        </ol>
+      </article>
+
+      <footer class="timebar" aria-label="时段占位">
+        <p class="timebar-label">光 / LIGHT</p>
+        <ul>
+          <li><button type="button" class="time-option" data-time="day" aria-pressed="false"><span class="dot"></span><span class="t-cn">白昼</span><em>Daylight</em></button></li>
+          <li><button type="button" class="time-option is-current" data-time="golden" aria-pressed="true"><span class="dot"></span><span class="t-cn">黄昏</span><em>Golden Hour</em></button></li>
+          <li><button type="button" class="time-option" data-time="night" aria-pressed="false"><span class="dot"></span><span class="t-cn">入夜</span><em>After Dark</em></button></li>
+        </ul>
+      </footer>
+    </aside>
+
+    <div class="loader" id="loader" aria-hidden="true">
+      <span class="loader-cn">江南 · 晚春</span>
+      <span class="loader-line"></span>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

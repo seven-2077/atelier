@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <title>Jacaranda Days — Sydney, after dark</title>
+    <meta name="description" content="A miniature Sydney street corner under jacaranda blossom, after dark." />
+  </head>
+  <body data-mode="night">
+    <div id="app"></div>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <main class="mag" aria-label="Jacaranda Days — the Sydney issue">
+      <div class="masthead">
+        <span>Vol. 04</span>
+        <span class="masthead-dot">·</span>
+        <span>Spring / Sydney</span>
+      </div>
+      <div class="rule"></div>
+
+      <h1 class="city">Sydney</h1>
+      <div class="issue">The Jacaranda Issue <span>November</span></div>
+
+      <h2 class="title">
+        <span>Jacaranda</span>
+        <span>Days</span>
+      </h2>
+
+      <p class="quote">A little corner of Sydney,<br />where spring falls softly.</p>
+
+      <section class="column">
+        <div class="eyebrow">A moment to stay</div>
+        <h3>Under the jacaranda.</h3>
+        <p>Sit down. Look out across the street; the city softens after six.</p>
+      </section>
+
+      <section class="column">
+        <div class="eyebrow">The corner edit</div>
+        <h3>Stories from the street.</h3>
+        <p>A shopfront, a balcony, a bench. The whole neighbourhood in one frame.</p>
+      </section>
+
+      <section class="column light">
+        <div class="eyebrow">The light of Sydney</div>
+        <div class="times" role="group" aria-label="Time of day">
+          <button type="button" data-mode="day">Daylight</button>
+          <span>·</span>
+          <button type="button" data-mode="golden">Golden hour</button>
+          <span>·</span>
+          <button type="button" data-mode="night" class="active">After dark</button>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>Sydney · 33.87° S / 151.21° E</span>
+        <span class="hint">Drag to orbit · Scroll to zoom</span>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
